@@ -1,0 +1,9 @@
+@import "../../node_modules/bootstrap";
+
+body {
+  /* 
+    background: repeat
+    url("http://prettypoun.p.r.pic.centerblog.net/13852b7b.gif");
+    */
+  padding-bottom: 100px;
+}

@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="{{path('accueil')}}">SNOWTRICKS</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+        <li class="nav-item active">
+            <a class="nav-link" href="{{path('accueil')}}">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{path('app_register')}}">Tricks</a>
+        </li>
+    {% if not app.user %}
+        <li class="nav-item">
+            <a class="nav-link" href="{{path('app_login')}}">Sign in</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{path('app_register')}}">Sign up</a>
+        </li>
+    {% endif %}
+    </ul>
+    {% if app.user %}
+        <span class="ml-auto">
+            {{ app.user.username }} - <a href="{{ path('app_logout') }}">Logout</a>
+        </span>
+    {% endif %}
+  </div>
+</nav>
