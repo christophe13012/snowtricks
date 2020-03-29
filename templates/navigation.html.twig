@@ -5,17 +5,17 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
-        <li class="nav-item active">
+        <li class="nav-item {% if app.request.get('_route') == 'accueil' %} active{% endif %}">
             <a class="nav-link" href="{{path('accueil')}}">Home <span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{path('app_register')}}">Tricks</a>
+        <li class="nav-item {% if app.request.get('_route') == 'tricks' %} active{% endif %}">
+            <a class="nav-link" href="{{path('tricks')}}">Tricks</a>
         </li>
     {% if not app.user %}
-        <li class="nav-item">
+        <li class="nav-item {% if app.request.get('_route') == 'app_login' %} active{% endif %}">
             <a class="nav-link" href="{{path('app_login')}}">Sign in</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item {% if app.request.get('_route') == 'app_register' %} active{% endif %}">
             <a class="nav-link" href="{{path('app_register')}}">Sign up</a>
         </li>
     {% endif %}

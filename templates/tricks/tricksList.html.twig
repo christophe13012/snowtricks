@@ -1,0 +1,17 @@
+<div class="row">
+  {% for trick in tricks %}
+    <div class="col-sm-4 d-flex align-items-stretch mb-5">
+      <div class="card">
+        <img class="card-img-top imgTrick" src="{{ trick.url }}" alt="Card image cap">
+        <div class="card-body">
+            <p><span class="badge badge-warning p-2 float-right">{{ trick.catName }}</span></p>
+            <h1 style="display: inline-block">{{ trick.name }}</h1>
+          <p class="card-text">{{ trick.description }}</p>
+        </div>
+        <div class="card-footer text-muted cardfooter">
+          <a href="#" class="btn btn-primary">Plus de détails</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+</div>

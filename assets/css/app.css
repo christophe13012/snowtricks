@@ -1,5 +1,21 @@
 @import "../../node_modules/bootstrap";
 
+.imgTrick {
+  width: 100%;
+  height: 15vw;
+  object-fit: cover;
+}
+
+.buttonDetail {
+  position: absolute;
+  bottom: 0;
+}
+
+.cardfooter {
+  background: transparent;
+  border-top: 0px;
+}
+
 body {
   /* 
     background: repeat
