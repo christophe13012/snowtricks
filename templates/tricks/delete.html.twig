@@ -1,0 +1,9 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+<div class="container p-5">
+    <p>Etes vous sûr de vouloir supprimer ce trick ?</p>
+    <a href={{ path("doDelete", { 'id': trick.id }) }} class="btn btn-success">Oui</a>    
+    <a href={{ path("tricks") }} class="btn btn-danger">Non, annuler</a>
+</div>
+{% endblock %}

@@ -13,7 +13,7 @@
             <a href="{{ path('app_register') }}" class="btn btn-primary">S'enregister</a>
         {% endif %}
         {% if app.user %}
-            <a href="{{ path('app_login') }}" class="btn btn-success mt-3">Ajouter un trick</a>
+            <a href="{{ path('add') }}" class="btn btn-success mt-3">Ajouter un trick</a>
         {% endif %}
         {% include 'tricks/trickslist.html.twig' %}
     </div>
