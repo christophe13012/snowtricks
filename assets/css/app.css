@@ -1,9 +1,33 @@
 @import "../../node_modules/bootstrap";
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap");
+
+.title {
+  color: #212529;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 88px;
+}
+
+.subtitle {
+  color: #212529;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 28px;
+}
+
+.carousel-caption {
+  position: relative;
+  left: 0;
+  top: 0;
+}
 
 .imgTrick {
   width: 100%;
   height: 15vw;
   object-fit: cover;
+}
+
+.imgTrickDetail {
+  width: 100%;
+  height: 20vw;
 }
 
 .buttonDetail {

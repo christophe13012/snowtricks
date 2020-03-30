@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row mt-5">
   {% for trick in tricks %}
     <div class="col-sm-4 d-flex align-items-stretch mb-5">
       <div class="card">
@@ -9,7 +9,7 @@
           <p class="card-text">{{ trick.description }}</p>
         </div>
         <div class="card-footer text-muted cardfooter">
-          <a href="#" class="btn btn-primary">Plus de détails</a>
+          <a href="{{ path("trick", { 'id': trick.id }) }}" class="btn btn-primary">Plus de détails</a>
         </div>
       </div>
     </div>

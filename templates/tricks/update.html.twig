@@ -1,0 +1,33 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Tricks{% endblock %}
+
+{% block body %}
+    <div class="container p-5">
+        <h1 class="mb-3">Editer ce trick</h1>
+        {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}  
+            {{ form_label(form.category, 'Categorie') }}
+            {{ form_widget(form.category, {'attr': {'class': 'form-control mb-3'}}) }}   
+
+            {{ form_label(form.name, 'Nom') }}
+            {{ form_widget(form.name, {'attr': {'class': 'form-control mb-3'}}) }} 
+
+            {{ form_label(form.description, 'Description') }}
+            {{ form_widget(form.description, {'attr': {'class': 'form-control mb-3'}}) }}
+
+            {{ form_label(form.url, 'Image url') }}
+            {{ form_widget(form.url, {'attr': {'class': 'form-control mb-3'}}) }}  
+
+            {% if not form.vars.valid %}
+                <div class="alert alert-danger">
+                    {{ form_errors(form.category) }} 
+                    {{ form_errors(form.name) }} 
+                    {{ form_errors(form.description) }} 
+                    {{ form_errors(form.url) }} 
+                </div>
+            {% endif %}
+            <button class="btn btn-lg btn-primary">Valider</button>
+            {{ form_end(form) }}
+    </div>
+    {{ dump(categories)}}
+{% endblock %}

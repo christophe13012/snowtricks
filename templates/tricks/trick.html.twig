@@ -1,0 +1,20 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Trick{% endblock %}
+
+{% block body %}
+    <div class="container p-5">
+        <p><span class="badge badge-warning p-2 float-right">{{ category }}</span></p>
+        <h1 style="display: inline-block">{{ trick.name }}</h1>
+        <p class="card-text mt-3">{{ trick.description }}</p>
+        <img class="card-img-top imgTrickDetail mt-3" src="{{ trick.url }}" alt="Card image cap">
+        {% if app.user %}
+            <a href="{{ path("update", { 'id': trick.id }) }}" class="btn btn-info mt-3">Editer</a>
+        {% endif %}
+        {% if not app.user %}
+            <div class="alert alert-info mt-3 text-center" role="alert">
+                Pour éditer un trick vous devez être enregistré !
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

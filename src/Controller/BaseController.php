@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Note;
-
+use App\Entity\Tricks;
 
 class BaseController extends AbstractController
 {
@@ -16,6 +16,12 @@ class BaseController extends AbstractController
      */
     public function getAccueil()
     {
-        return $this->render('index.html.twig');
+        $tricks = $this->getDoctrine()
+        ->getRepository(Tricks::class)
+        ->findBy(array(), array('id' => 'DESC'),3);
+
+        return $this->render('index.html.twig',[
+            "tricks" => $tricks
+        ]);
     }
 }
