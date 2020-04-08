@@ -5,9 +5,11 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Tricks;
+use App\Entity\Message;
 use App\Entity\Category;
 use Symfony\Component\HttpFoundation\Request;
 use App\Form\TrickType;
+use App\Form\MessageFormType;
 
 
 class TricksController extends AbstractController
@@ -34,10 +36,31 @@ class TricksController extends AbstractController
         ]);
     }
     /**
-    * @Route("/trick", methods={"GET","HEAD"}, name="trick")
+    * @Route("/trick", name="trick")
     */
     public function getTrick(Request $request)
     {
+        $user = $this->getUser();
+        $id = $request->query->get('id');
+
+        $messages = $this->getDoctrine()
+            ->getRepository(Message::class)
+            ->findBy(array('trickId' => $id), ['id' => 'DESC']);
+
+        $message = new Message();
+        $form = $this->createForm(MessageFormType::class, $message, [
+        'user' => $user,'id'=> $id]);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $message = $form->getData();
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($message);
+            $em->flush();
+            return $this->redirectToRoute('trick', ['id' => $id]);
+        }
+
+
         $id = $request->query->get('id');
         $trick = $this->getDoctrine()
         ->getRepository(Tricks::class)
@@ -49,8 +72,10 @@ class TricksController extends AbstractController
 
 
         return $this->render('tricks/trick.html.twig', [
+            'form' => $form->createView(),
             'trick' => $trick,
-            'category' => $category->getName()
+            'category' => $category->getName(),
+            'messages' => $messages
         ]);
     }
     /**

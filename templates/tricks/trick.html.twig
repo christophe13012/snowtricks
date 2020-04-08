@@ -11,11 +11,13 @@
         {% if app.user %}
             <a href="{{ path("update", { 'id': trick.id }) }}" class="btn btn-info mt-3">Editer</a>
             <a href="{{ path("delete", { 'id': trick.id }) }}" class="btn btn-danger mt-3">Supprimer</a>
+        {% include 'message/index.html.twig' %}
         {% endif %}
         {% if not app.user %}
             <div class="alert alert-info mt-3 text-center" role="alert">
                 Pour éditer un trick vous devez être enregistré !
             </div>
         {% endif %}
+        	{% include 'message/modal.html.twig' %}
     </div>
 {% endblock %}

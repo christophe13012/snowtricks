@@ -1,0 +1,10 @@
+<a class="btn btn-primary mt-3" href="#" data-toggle="modal" data-target="#message">Ajouter un message</a>
+<div class="col-6">
+    <ul class="list-group mt-3">
+        {% for message in messages %}        
+            <li class="list-group-item">
+                {{message.message}}<span style="color: blue" class="float-right">{{message.author}}</span>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
